@@ -7,10 +7,11 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 
 
 
-const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7012';
+const isProd = process.env.NODE_ENV === 'production';
+const target = isProd ? 'https://your-azure-backend-url.azurewebsites.net' : 
+    (env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
+    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7012');
 
-// https://vitejs.dev/config/
 export default defineConfig({
     build: {
         watch: null
@@ -23,15 +24,15 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/experience':{
+            '^/experience': {
                 target,
-                secure: false
+                secure: isProd // Set secure to true in production
             },
-            '^/about':{
+            '^/about': {
                 target,
-                secure: false
+                secure: isProd // Set secure to true in production
             }
         },
         port: 5173
     }
-})
+});
