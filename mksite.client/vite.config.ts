@@ -8,7 +8,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 
 
 const isProd = process.env.NODE_ENV === 'production';
-const target = isProd ? 'https://your-azure-backend-url.azurewebsites.net' : 
+const target = isProd ? 'https://kamksiteserver.azurewebsites.net/' : 
     (env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
     env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7012');
 
