@@ -1,34 +1,37 @@
+import { fileURLToPath, URL } from 'node:url';
+
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import basicSsl from '@vitejs/plugin-basic-ssl';
+import plugin from '@vitejs/plugin-react';
+import { env } from 'process';
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
-const isProd = process.env.NODE_ENV === 'production';
-const target = isProd
-  ? 'https://kaserverapp-geb4fmazezhscyht.canadacentral-01.azurewebsites.net'
-  : `https://localhost:${process.env.ASPNETCORE_HTTPS_PORT || 7012}`;
 
+
+const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
+    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7012';
+
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), basicSsl()],
-  server: {
-    port: 5173,
-    proxy: isProd
-      ? {}
-      : {
-          '/api/experience': {
-            target,
-            secure: false,
-            changeOrigin: true
-          },
-          '/api/about': {
-            target,
-            secure: false,
-            changeOrigin: true
-          }
+    build: {
+        watch: null
+    },
+    plugins: [plugin(), basicSsl()],
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url))
         }
-  },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+    server: {
+        proxy: {
+            '^/experience':{
+                target,
+                secure: false
+            },
+            '^/about':{
+                target,
+                secure: false
+            }
+        },
+        port: 5173
     }
-  }
-});
+})
