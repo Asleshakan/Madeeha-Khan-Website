@@ -7,7 +7,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowClient",
         builder =>
         {
-            builder.WithOrigins("https://your-client-app-url.com") // Use specific origins in production
+            builder.WithOrigins("https://ashy-forest-061a30b10.5.azurestaticapps.net/") // Use specific origins in production
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
