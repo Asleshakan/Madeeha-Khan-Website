@@ -5,7 +5,7 @@ import { env } from 'process';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
 const isProd = process.env.NODE_ENV === 'production';
-const target = isProd ? 'https://kamksiteserver.azurewebsites.net' : 
+const target = isProd ? 'https://kaserverapp-geb4fmazezhscyht.canadacentral-01.azurewebsites.net' : 
     (env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
     env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7012');
 
@@ -21,11 +21,11 @@ export default defineConfig({
     },
     server: {
         proxy: isProd ? {} : {  // Only apply proxy in local development
-            '^/experience': {
+            '^/api/experience': {
                 target,
                 secure: false
             },
-            '^/about': {
+            '^/api/about': {
                 target,
                 secure: false
             }
