@@ -1,12 +1,12 @@
 {
   "routes": [
     {
-      "route": "/experience/*",
-      "rewrite": "https://kamksiteserver.azurewebsites.net/experience/*"
+      "route": "api/experience/*",
+      "rewrite": "https://kamksiteserver.azurewebsites.net/api/experience/*"
     },
     {
-      "route": "/about/*",
-      "rewrite": "https://kamksiteserver.azurewebsites.net/about/*"
+      "route": "api/about/*",
+      "rewrite": "https://kamksiteserver.azurewebsites.net/api/about/*"
     },
     {
       "route": "/*",
