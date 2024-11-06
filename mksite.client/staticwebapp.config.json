@@ -1,0 +1,17 @@
+{
+  "routes": [
+    {
+      "route": "/experience/*",
+      "rewrite": "https://kamksiteserver.azurewebsites.net/experience/*"
+    },
+    {
+      "route": "/about/*",
+      "rewrite": "https://kamksiteserver.azurewebsites.net/about/*"
+    }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  }
+}
