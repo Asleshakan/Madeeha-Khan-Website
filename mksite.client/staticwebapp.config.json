@@ -7,11 +7,20 @@
     {
       "route": "/about/*",
       "rewrite": "https://kamksiteserver.azurewebsites.net/about/*"
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html"
     }
   ],
   "responseOverrides": {
     "404": {
       "rewrite": "/index.html"
     }
+  },
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "*"
   }
 }
