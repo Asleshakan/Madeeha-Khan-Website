@@ -2,11 +2,11 @@
   "routes": [
     {
       "route": "api/experience/*",
-      "rewrite": "https://kamksiteserver.azurewebsites.net/api/experience/*"
+      "rewrite": "https://kaserverapp-geb4fmazezhscyht.canadacentral-01.azurewebsites.net/api/experience/*"
     },
     {
       "route": "api/about/*",
-      "rewrite": "https://kamksiteserver.azurewebsites.net/api/about/*"
+      "rewrite": "https://kaserverapp-geb4fmazezhscyht.canadacentral-01.azurewebsites.net/api/about/*"
     },
     {
       "route": "/*",
