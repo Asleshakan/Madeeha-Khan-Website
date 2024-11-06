@@ -5,7 +5,7 @@ using mksite.Server.Models;
 namespace mksite.Server.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class ExperienceController : ControllerBase
 {
     private ExperienceData Experience = new();
