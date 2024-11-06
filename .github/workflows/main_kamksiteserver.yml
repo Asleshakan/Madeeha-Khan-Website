@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'kamksiteServer'
           slot-name: 'Production'
-          package: ./myapp  # Correct artifact path for deployment
+          package: ./  # Use current directory after artifact download
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C770C8FFF9C54089B98D579F299ED6D5 }}
