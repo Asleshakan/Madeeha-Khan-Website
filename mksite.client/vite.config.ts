@@ -23,11 +23,11 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/api/experience':{
+            '^/experience':{
                 target,
                 secure: false
             },
-            '^/api/about':{
+            '^/about':{
                 target,
                 secure: false
             }
