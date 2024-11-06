@@ -12,7 +12,7 @@ export const Resume = () => {
     null
   );
   useEffect(() => {
-    experience<ExperienceModel>(`api/experience/${resumeControl}`)
+    experience<ExperienceModel>(`experience/${resumeControl}`)
       .then((result) => {
         setExperienceData(result);
       })
