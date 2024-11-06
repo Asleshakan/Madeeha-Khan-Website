@@ -10,8 +10,8 @@ using mksite.Server.Data;
 
 namespace mksite.Server.Controllers
 {
-   [ApiController]
-   [Route("api/[controller]")]
+   
+   [Route("[controller]")]
     public class AboutController : ControllerBase
     {
         private readonly ILogger<AboutController> _logger;
